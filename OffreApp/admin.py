@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from .models import Offre
 
 # Register your models here.
@@ -43,3 +44,7 @@ class OffreAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Offre, OffreAdmin)
+=======
+
+# Register your models here.
+>>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be

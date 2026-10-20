@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Expedition
+<<<<<<< HEAD
 from django.utils import timezone
 from EntrepriseApp.models import Entreprise
 # Register your models here.
@@ -42,3 +43,13 @@ class ExpeditionAdmin(admin.ModelAdmin):
     )
 
 
+=======
+class expeditionadmin(admin.ModelAdmin):
+    
+    list_display = ('reference', 'ville_depart', 'ville_arrive', 'poids_kg', 'statut', 'entreprise', 'date_souhaitee')
+    list_editable = ('statut',)
+    search_fields = ('reference', 'ville_depart', 'ville_arrive')
+    list_filter = ('statut', 'ville_depart', 'ville_arrive')
+    readonly_fields = ('reference', 'created_at', 'updated_at')
+admin.site.register(Expedition, expeditionadmin)
+>>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
