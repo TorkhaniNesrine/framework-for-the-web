@@ -1,5 +1,5 @@
 from django.contrib import admin
-<<<<<<< HEAD
+
 from django.contrib.auth.admin import UserAdmin
 
 from VehiculeApp.models import Vehicule
@@ -69,4 +69,3 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(Utilisateur, UserAdmin)
 admin.site.register(Entreprise)
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be

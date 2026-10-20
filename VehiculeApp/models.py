@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-<<<<<<< HEAD
 from django.core.exceptions import ValidationError
 
 
@@ -39,17 +38,3 @@ class Vehicule(models.Model):
 
     def __str__(self):
         return f"{self.immatricule} ({self.type_vehicule})"
-
-
-=======
-
-class Vehicule(models.Model):
-    immatriculation=models.CharField(max_length=200,unique=True)
-    type_vehicule =models.CharField(choices=[('f','electrique'),('t','hybride')],default='f')
-    capacite_kg=models.PositiveIntegerField(validators=[
-        MinValueValidator(100, "La capacité doit être superieur de  0 kg")
-    ])
-    disponible=models.BooleanField(default=True)
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be

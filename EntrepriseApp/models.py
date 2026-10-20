@@ -1,10 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-<<<<<<< HEAD
 from django.core.validators import MinLengthValidator, RegexValidator
-=======
 from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
+
 from django.core.exceptions import ValidationError
 from django.utils import timezone
 
@@ -69,7 +67,6 @@ class Utilisateur(AbstractUser):
         default='c'
     )
 
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -102,7 +99,7 @@ class Utilisateur(AbstractUser):
             )
 
         return f"{prefix}{n:02d}"
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
+
 
     def save(self, *args, **kwargs):
         if not self.user_id:
@@ -195,4 +192,3 @@ class Entreprise(models.Model):
         on_delete=models.CASCADE,
         related_name='entreprise'
     )
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be

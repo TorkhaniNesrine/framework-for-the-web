@@ -47,4 +47,3 @@ admin.site.register(Offre, OffreAdmin)
 =======
 
 # Register your models here.
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be

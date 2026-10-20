@@ -20,11 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-8=swr6jp0-l9%&-5uha2p&jtcowv0yd7s#r=fha!#n4_4q-6xx'
-=======
-SECRET_KEY = 'django-insecure-_@#ii56a-2)2jma-42hs%_*&8!iq)ypgof$9s_%8z+2zyl%@pz'
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,15 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'testapp',
-    'EntrepriseApp','ExpeditionApp','OffreApp','VehiculeApp',
-=======
     'EntrepriseApp',
-    'OffreApp',
     'ExpeditionApp',
+    'OffreApp',
     'VehiculeApp',
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
 ]
 
 MIDDLEWARE = [
@@ -88,11 +80,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-<<<<<<< HEAD
-        'NAME': BASE_DIR / 'racem.sqlite3',
-=======
         'NAME': BASE_DIR / 'nesrine.sqlite3',
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
     }
 }
 
@@ -137,8 +125,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-<<<<<<< HEAD
 
-=======
->>>>>>> 8dc741631e853031c30b08f9717f6a53c79944be
 AUTH_USER_MODEL = 'EntrepriseApp.Utilisateur'
