@@ -50,25 +50,25 @@ class Offre(models.Model):
     def clean(self):
         super().clean()
 
-        # R1
+        # R1 
         if self.transporteur_id and self.transporteur.type_entreprise != 'transporteur':
             raise ValidationError({
                 'transporteur': "Une offre ne peut être créée que par une entreprise dont type_entreprise = transporteur."
             })
 
-        # R2
+        # R2 
         if self.vehicule_id and self.transporteur_id and self.vehicule.entreprise_id != self.transporteur_id:
             raise ValidationError({
                 'vehicule': "Le véhicule associé à une offre doit appartenir à la même entreprise que le transporteur de l'offre."
             })
 
-        # R3
+        # R3 
         if not self.pk and self.expedition_id and self.expedition.statut != 'publiee':
             raise ValidationError({
                 'expedition': "Une expédition ne peut recevoir de nouvelles offres que si son statut est 'publiee'."
             })
 
-        # R4
+        # R4 
         if self.statut == 'proposee' and self.transporteur_id and self.expedition_id:
             doublon = Offre.objects.filter(
                 expedition_id=self.expedition_id,
@@ -88,13 +88,13 @@ class Offre(models.Model):
                 'vehicule': "Un véhicule dont disponible = False ne peut pas être proposé sur une nouvelle offre."
             })
 
-        # R7
+        # R7 
         if self.vehicule_id and self.expedition_id:
             CAPACITE_MAX = {
-                'camionnette':    1_500,
-                'fourgon':        3_500,
-                'camion_porteur': 19_000,
-                'semi_remorque':  26_000,
+                'camionnette':    1_500,   
+                'fourgon':        3_500,   
+                'camion_porteur': 19_000,  
+                'semi_remorque':  26_000,  
             }
             capacite = CAPACITE_MAX.get(self.vehicule.type_vehicule)
             if capacite is not None and self.expedition.poids_kg > capacite:
@@ -107,7 +107,7 @@ class Offre(models.Model):
                 })
 
     def save(self, *args, **kwargs):
-        # (R5)
+        # ? (R5)
         statut_precedent = None
         if self.pk:
             try:
@@ -118,7 +118,7 @@ class Offre(models.Model):
         self.full_clean()
         super().save(*args, **kwargs)
 
-        # R5
+        # R5 
         if self.statut == 'acceptee' and statut_precedent != 'acceptee':
             expedition = self.expedition
             expedition.statut = 'attribuee'

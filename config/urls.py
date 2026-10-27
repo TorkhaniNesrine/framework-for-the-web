@@ -15,8 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # C'est cette ligne qui dit à Django d'aller chercher dans ExpeditionApp :
+    path('expedition/', include('ExpeditionApp.urls')), 
 ]

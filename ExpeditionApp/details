@@ -1,0 +1,3 @@
+{{ expedition.reference }} - {{ expedition.entreprise }} - {{ expedition.date_depart }} - {{ expedition.date_retour }}
+
+<a href="{% url 'list' %}">Back to list</a>

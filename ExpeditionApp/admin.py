@@ -1,71 +1,42 @@
 from django.contrib import admin
+from django.utils import timezone
+from .models import Expedition
 
-from django.contrib.auth.admin import UserAdmin
+# Register your models here.
+class EnRetardFilter(admin.SimpleListFilter) :
+    title ="en retard"
+    parameter_name = "en_retard"
+    def lookups(self, request, model_admin) :
+        return [("oui","oui"),("non","non")]
+    def queryset(self, request, queryset):
+        aujourd_hui =  timezone.now().date()
+        if self.value() =="oui" :
+            return queryset.filter(statut="publiee",
+                                   date_souhaitee__lt=aujourd_hui)
+        if self.value() =="non" :
+                    return queryset.exclude(statut="publiee",
+                                           date_souhaitee__lt=aujourd_hui)
+        return queryset
 
-from VehiculeApp.models import Vehicule
-from .models import Utilisateur, Entreprise
-
-admin.site.site_header = 'TransConnect - Administration'
-admin.site.site_title = 'TransConnect'
-admin.site.index_title = "Tableau de bord"
-
-class VehiculeInline(admin.TabularInline):
-    model = Vehicule
-    fields = ('type_vehicule', 'capacite_kg', 'disponible')
-    extra = 2
-    show_change_link = True
-
-
-@admin.register(Utilisateur)
-class UtilisateurAdmin(UserAdmin):
-    list_display = ('user_id', 'username', 'email', 'role', 'is_active', 'is_staff')
-    list_filter = ('role', 'is_active', 'is_staff', 'is_superuser')
-    search_fields = ('user_id', 'username', 'email')
-    ordering = ('-date_joined',)
-    readonly_fields = ('user_id',)
-
-    fieldsets = UserAdmin.fieldsets + (
-        ('Informations TransConnect', {
-            'fields': ('user_id', 'telephone', 'role'),
-        }),
-    )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('username', 'email', 'telephone', 'role', 'password1', 'password2'),
-        }),
-    )
-
-
-@admin.register(Entreprise)
-class EntrepriseAdmin(admin.ModelAdmin):
-    inlines = [VehiculeInline]
-    list_display = ('raison_social', 'matricule_fiscal', 'type_entreprise', 'gerant', 'created_at')
-    list_filter = ('type_entreprise',)
-    search_fields = ('raison_social', 'matricule_fiscal')
-    readonly_fields = ('created_at', 'updated_at')
+class ExpeditionAdmin(admin.ModelAdmin):
+    list_display = ('reference', 'entreprise', 'ville_depart', 'ville_arrivee', 'poids_kg', 'date_souhaitee', 'statut')
+    list_filter = ('statut', 'date_souhaitee', 'entreprise', EnRetardFilter)
+    search_fields = ('reference', 'ville_depart', 'ville_arrivee', 'entreprise__raison_social')
+    list_editable = ('statut',)
+    ordering = ('-created_at',)
+    readonly_fields = ('reference', 'created_at', 'updated_at')
 
     fieldsets = (
-        ('Informations générales', {
-            'fields': ('raison_social', 'matricule_fiscal', 'type_entreprise')
+        ("Informations générales", {
+            'fields': ('reference', 'entreprise', 'statut')
         }),
-        ('Contact et rattachement', {
-            'fields': ('adresse', 'gerant')
+        ("Détails logistiques", {
+            'fields': ('ville_depart', 'ville_arrivee', 'poids_kg', 'date_souhaitee', 'description')
         }),
-        ('Horodatage', {
+        ("Dates & Historique", {
             'fields': ('created_at', 'updated_at'),
             'classes': ('collapse',),
         }),
     )
-=======
-from .models import Utilisateur, Entreprise
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'username', 'email', 'is_active', 'is_superuser', 'role')
-    list_editable = ('username', 'is_active', 'is_superuser')
-    search_fields = ('user_id', 'username', 'email')
-    list_filter = ('is_active', 'is_superuser', 'role')
-    list_per_page = 2
-
-admin.site.register(Utilisateur, UserAdmin)
-admin.site.register(Entreprise)
+admin.site.register(Expedition, ExpeditionAdmin)
