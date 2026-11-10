@@ -7,7 +7,7 @@ from .models import Entreprise, Utilisateur
 # Register your models here.
 class VehiculeInLine(admin.TabularInline) :
     model = Vehicule
-    fields=("immatriculation","type_vehicule","capacite_kg","disponible")
+    fields=("type_vehicule","capacite_kg","disponible")
     extra = 2
     show_change_link =  True
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail Expédition</title>
+</head>
+<body>
+    <h1>Détail de l'expédition : {{ expedition.reference }}</h1>
+
+    <ul>
+        <li><strong>Référence :</strong> {{ expedition.reference }}</li>
+        <li><strong>Entreprise :</strong> {{ expedition.entreprise.raison_social }}</li>
+        <li><strong>Ville de départ :</strong> {{ expedition.ville_depart }}</li>
+        <li><strong>Ville d'arrivée :</strong> {{ expedition.ville_arrivee }}</li>
+        <li><strong>Date souhaitée :</strong> {{ expedition.date_souhaitee }}</li>
+        <li><strong>Poids :</strong> {{ expedition.poids_kg }} kg</li>
+        <li><strong>Statut :</strong> {{ expedition.get_statut_display }}</li>
+        <li><strong>Description :</strong> {{ expedition.description|default:"Aucune" }}</li>
+    </ul>
+
+    <br>
+    
+    <!-- NOUVEAU BOUTON MODIFIER ICI -->
+    <a href="{% url 'update_expedition' expedition.id %}" style="color: blue; font-weight: bold;">
+        ✏️ Modifier cette expédition
+    </a>
+    <br><br>
+
+    <!-- BOUTON SUPPRIMER -->
+    <a href="{% url 'delete' expedition.id %}" style="color: red; font-weight: bold;">
+        🗑️ Supprimer cette expédition
+    </a>
+    
+    <br><br>
+
+    <!-- Lien de retour vers la liste -->
+    <a href="{% url 'liste_classe' %}">⬅ Retour à la liste</a>
+</body> 
+</html>

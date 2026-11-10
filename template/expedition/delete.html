@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer l'expédition</title>
+</head>
+<body>
+    <h1>Êtes-vous sûr de vouloir supprimer cette expédition ?</h1>
+
+    <p><strong>Référence :</strong> {{ expedition.reference }}</p>
+    <p><strong>Trajet :</strong> {{ expedition.ville_depart }} ➔ {{ expedition.ville_arrivee }}</p>
+
+    <!-- Le formulaire POST (sans namespace) -->
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" style="background-color: red; color: white; padding: 10px; cursor: pointer;">
+            Oui, supprimer définitivement
+        </button>
+        <!-- Lien Annuler corrigé (sans le nom de l'application devant) -->
+        <a href="{% url 'liste_classe' %}" style="margin-left: 20px;">Annuler</a>
+    </form>
+</body>
+</html>

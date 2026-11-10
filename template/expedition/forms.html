@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Expédition</title>
+</head>
+<body>
+    <!-- Le titre change selon si on est en création ou en modification -->
+    {% if object %}
+        <h1>Modifier l'expédition : {{ object.reference }}</h1>
+    {% else %}
+        <h1>Créer une nouvelle expédition</h1>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit">Enregistrer</button>
+        <a href="{% url 'liste_classe' %}">Annuler</a>
+    </form>
+</body>
+</html>

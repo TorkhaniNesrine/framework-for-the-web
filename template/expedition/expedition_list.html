@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Expéditions</title>
+</head>
+<body>
+    <h1>Expeditions list</h1>
+
+    <!-- Bouton pour créer une nouvelle expédition -->
+    <p>
+        <a href="{% url 'create_expedition' %}">➕ Créer une nouvelle expédition</a>
+    </p>
+
+    <ul>
+        <!-- On boucle sur 'expeditions' (défini dans views.py) -->
+        {% for expedition in expeditions %}
+            <li>
+                <!-- Lien vers le détail -->
+                <a href="{% url 'detail' expedition.id %}">
+                    {{ expedition.reference }} - {{ expedition.ville_depart }} vers {{ expedition.ville_arrivee }} ({{ expedition.date_souhaitee }})
+                </a>
+                
+                <!-- Bouton Modifier -->
+                | <a href="{% url 'update_expedition' expedition.id %}" style="color: blue;">✏️ Modifier</a>
+                
+                <!-- Bouton Supprimer -->
+                | <a href="{% url 'delete' expedition.id %}" style="color: red;">🗑️ Supprimer</a>
+            </li>
+        {% empty %}
+            <li>Aucune expédition pour le moment.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
