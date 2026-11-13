@@ -1,0 +1,15 @@
+<h1>Liste des Véhicules</h1>
+<a href="{% url 'vehicule:creer_vehicule' %}">➕ Créer un véhicule</a>
+<br><br>
+
+<ul>
+    {% for vehicule in vehicules %}
+        <li>
+            <a href="{% url 'vehicule:detail_vehicule' vehicule.pk %}">{{ vehicule.immatricule }}</a>
+            | <a href="{% url 'vehicule:modifier_vehicule' vehicule.pk %}">✏️ Modifier</a>
+            | <a href="{% url 'vehicule:supprimer_vehicule' vehicule.pk %}">🗑️ Supprimer</a>
+        </li>
+    {% empty %}
+        <li>Aucun véhicule trouvé.</li>
+    {% endfor %}
+</ul>

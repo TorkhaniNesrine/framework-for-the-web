@@ -1,0 +1,7 @@
+<h1>Détails du Véhicule : {{ vehicule.immatricule }}</h1>
+<p><strong>Type :</strong> {{ vehicule.get_type_vehicule_display }}</p>
+<p><strong>Capacité :</strong> {{ vehicule.capacite_kg }} kg</p>
+<p><strong>Disponible :</strong> {{ vehicule.disponible|yesno:"Oui,Non" }}</p>
+<p><strong>Entreprise :</strong> {{ vehicule.entreprise.raison_social }}</p>
+
+<a href="{% url 'vehicule:liste_vehicule_classe' %}">Retour à la liste</a>

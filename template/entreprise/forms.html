@@ -1,0 +1,9 @@
+<h1>Formulaire Entreprise</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+
+<a href="{% url 'entreprise:liste_entreprise_classe' %}">Annuler</a>

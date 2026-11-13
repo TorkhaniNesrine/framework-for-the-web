@@ -1,0 +1,10 @@
+<h1>Formulaire Véhicule</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+
+<br>
+<a href="{% url 'vehicule:liste_vehicule_classe' %}">Annuler</a>

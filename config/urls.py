@@ -21,6 +21,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # C'est cette ligne qui dit à Django d'aller chercher dans ExpeditionApp :
     path('expedition/', include('ExpeditionApp.urls')), 
+    path('entreprises/', include('EntrepriseApp.urls')),
+    path('offres/', include('OffreApp.urls')),
+    path('vehicules/', include('VehiculeApp.urls')),
 ]

@@ -1,0 +1,10 @@
+<h1>Détails de l'Offre #{{ offre.id }}</h1>
+<p><strong>Expédition :</strong> {{ offre.expedition }}</p>
+<p><strong>Transporteur :</strong> {{ offre.transporteur.raison_social }}</p>
+<p><strong>Véhicule :</strong> {{ offre.vehicule }}</p>
+<p><strong>Prix :</strong> {{ offre.prix }} DT</p>
+<p><strong>Délai :</strong> {{ offre.delai_jours }} jours</p>
+<p><strong>Statut :</strong> {{ offre.get_statut_display }}</p>
+<p><strong>Date :</strong> {{ offre.date_proposition }}</p>
+
+<a href="{% url 'offre:liste_offre_classe' %}">Retour à la liste</a>

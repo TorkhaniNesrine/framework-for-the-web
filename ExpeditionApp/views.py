@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Expedition
 from django.views.generic import ListView, DetailView, DeleteView,CreateView,UpdateView
 from django.urls import reverse_lazy
-from .forms import ExpeditionForm  # <-- Remplacez "froms" par "forms"# Create your views here.
+from .forms import ExpeditionForm  
 
 def home(request):
     return HttpResponse("<h1> Welcome to </h1>")
@@ -13,9 +13,8 @@ def welcome(request, name):
 
 def listExpeditions(request):
     liste = Expedition.objects.all()
-    # Si vous avez un fichier list.html, ceci fonctionnera
-    return render(request, 'expedition/list.html', {"list": liste})
-
+    # J'ai remplacé "list" par "expeditions" ici 👇
+    return render(request, 'expedition/expedition_list.html', {"expeditions": liste})
 # Cette fonction est utilisée par la route 'detail'
 def detailsExpedition(request, id):
     expedition = Expedition.objects.get(id=id)

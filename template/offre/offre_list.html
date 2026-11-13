@@ -1,0 +1,15 @@
+<h1>Liste des Offres</h1>
+<a href="{% url 'offre:creer_offre' %}">➕ Créer une offre</a>
+<br><br>
+
+<ul>
+    {% for offre in offres %}
+        <li>
+            <a href="{% url 'offre:detail_offre' offre.pk %}">Offre #{{ offre.id }}</a>
+            | <a href="{% url 'offre:modifier_offre' offre.pk %}">✏️ Modifier</a>
+            | <a href="{% url 'offre:supprimer_offre' offre.pk %}">🗑️ Supprimer</a>
+        </li>
+    {% empty %}
+        <li>Aucune offre trouvée.</li>
+    {% endfor %}
+</ul>

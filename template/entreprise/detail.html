@@ -1,0 +1,7 @@
+<h1>Détails : {{ entreprise.raison_social }}</h1>
+<p>Matricule : {{ entreprise.matricule_fiscal }}</p>
+<p>Type : {{ entreprise.get_type_entreprise_display }}</p>
+<p>Gérant : {{ entreprise.gerant.username }}</p>
+<p>Adresse : {{ entreprise.adresse }}</p>
+
+<a href="{% url 'entreprise:liste_entreprise_classe' %}">Retour à la liste</a>

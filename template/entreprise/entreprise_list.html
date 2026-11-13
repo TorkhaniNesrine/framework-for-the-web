@@ -1,0 +1,15 @@
+<h1>Liste des Entreprises</h1>
+<a href="{% url 'entreprise:creer_entreprise' %}">➕ Créer une entreprise</a>
+<br><br>
+
+<ul>
+    {% for entreprise in entreprises %}
+        <li>
+            <a href="{% url 'entreprise:detail_entreprise' entreprise.pk %}">{{ entreprise.raison_social }}</a>
+            | <a href="{% url 'entreprise:modifier_entreprise' entreprise.pk %}">✏️ Modifier</a>
+            | <a href="{% url 'entreprise:supprimer_entreprise' entreprise.pk %}">🗑️ Supprimer</a>
+        </li>
+    {% empty %}
+        <li>Aucune entreprise trouvée.</li>
+    {% endfor %}
+</ul>

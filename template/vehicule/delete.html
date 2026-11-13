@@ -1,0 +1,8 @@
+<h1>Supprimer le véhicule</h1>
+<p>Es-tu sûr de vouloir supprimer le véhicule {{ vehicule.immatricule }} ?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" style="color: red;">Oui, supprimer</button>
+</form>
+<a href="{% url 'vehicule:liste_vehicule_classe' %}">Annuler</a>

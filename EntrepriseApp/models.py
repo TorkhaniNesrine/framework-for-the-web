@@ -22,7 +22,7 @@ class Utilisateur(AbstractUser):
             ('transporteur', 'Transporteur'),
             ('admin', 'Admin')
         ],
-        default='chargeur'
+        
     )
     telephone = models.CharField(max_length=20, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
