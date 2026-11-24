@@ -59,7 +59,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR /'template' ],
+        'DIRS': [BASE_DIR / 'template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,3 +127,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'EntrepriseApp.Utilisateur'
+
+LOGIN_REDIRECT_URL = '/expedition/home/'
+LOGOUT_REDIRECT_URL = '/login/'

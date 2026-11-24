@@ -10,22 +10,23 @@
 
     <!-- Bouton pour créer une nouvelle expédition -->
     <p>
+        <!-- Utilise 'create_expedition' (qui correspond à CreateExpedition.as_view()) -->
         <a href="{% url 'create_expedition' %}">➕ Créer une nouvelle expédition</a>
     </p>
 
     <ul>
-        <!-- On boucle sur 'expeditions' (défini dans views.py) -->
         {% for expedition in expeditions %}
             <li>
-                <!-- Lien vers le détail -->
-                <a href="{% url 'detail' expedition.id %}">
+                <!-- Utilise 'detail_classe' (qui correspond à Detail_expedition.as_view()) -->
+                <!-- Attention : ici, l'URL attend 'id' ou 'pk' selon ton urls.py -->
+                <a href="{% url 'detail_classe' expedition.id %}">
                     {{ expedition.reference }} - {{ expedition.ville_depart }} vers {{ expedition.ville_arrivee }} ({{ expedition.date_souhaitee }})
                 </a>
                 
-                <!-- Bouton Modifier -->
+                <!-- Utilise 'update_expedition' -->
                 | <a href="{% url 'update_expedition' expedition.id %}" style="color: blue;">✏️ Modifier</a>
                 
-                <!-- Bouton Supprimer -->
+                <!-- Utilise 'delete' (qui correspond à DeleteExpedition.as_view()) -->
                 | <a href="{% url 'delete' expedition.id %}" style="color: red;">🗑️ Supprimer</a>
             </li>
         {% empty %}
